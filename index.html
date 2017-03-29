@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>哈哈哈哈</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="lib/Font-Awesome-4.6.3/css/font-awesome.css">
+	<style>
+		body,html,div,span{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			margin: 5px auto;
+			width: 200px;
+			height: 50px;
+			background: #ccc
+		}
+		i{
+			display: inline-block;
+			margin: 10px 5px;
+			width: 40px;
+			height: 50px;
+		}
+		i.on,.half,.off{
+			width: 30px;
+			height: 30px;
+			font-size: 20px
+		}
+		.on{
+			color: green
+		}
+		.half{
+			color: green
+		}
+		.off{
+			color: red
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var on = "on fa fa-star record_icon", off = "off fa fa-star record_icon", half = "half fa fa-star-half-o record_icon", length =5, arr = [];
+		//0到5的一个保留一位小数的随机数,模拟星星分数
+		var star = (Math.random() * 5).toFixed(1)
+		console.log(star)
+		//格式化星星分数,期望返回值为整数或者是带.5的小数
+		var ostar = Math.floor(star * 2) / 2;
+		//取星星分数的整数
+		var num = Math.floor(ostar);
+		//判断星星数是否有小数
+		var int = ostar % 1;
+		console.log(num)
+		//将不同分数对应不同状态push到arr中
+		for (var i = 0; i < num; i++) {
+			arr.push(on)
+		}
+		if (int) {
+			arr.push(half)
+		}
+		while(arr.length<length) {
+			arr.push(off)
+		}
+
+		//动态创建Dom,为创建span创建和arr中相同的类名,从而通过设置类名的css,显示不同的星星样式
+		var box = document.createElement("div")
+		for (var i = 0; i < arr.length; i++) {
+			var span = document.createElement('i'); 
+			span.className = arr[i];
+			box.appendChild(span)
+		}
+		document.body.appendChild(box)
+	</script>
+</body>
+</html>
